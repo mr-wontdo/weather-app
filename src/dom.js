@@ -13,6 +13,9 @@ const renderData = async (searchBarValue) => {
     document.querySelector('.chance-rain').textContent = data.chanceRain;
     document.querySelector('.humidity').textContent = data.humidity;
     document.querySelector('.wind-speed').textContent = data.windSpeedKPH;
+
+    previousSearch.setValue(searchBarValue);
+    document.querySelector('input').value = '';
 };
 
 // Search bar handler
@@ -24,5 +27,17 @@ const searchBarHandler = (() => {
         }
     });
 })();
+
+// Previous search handler
+const previousSearchHandler = () => {
+    let previousSearchValue = null;
+    const getValue = () => previousSearchValue;
+    const setValue = (searchBarValue) => {
+        previousSearchValue = searchBarValue;
+    };
+    return { getValue, setValue };
+};
+
+const previousSearch = previousSearchHandler();
 
 export default renderData;
