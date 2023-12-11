@@ -1,3 +1,22 @@
+// Process data
+const processData = async (searchParameter) => {
+    const [weatherData, forecastData] = await Promise.all([getWeatherData(searchParameter), getForecastData(searchParameter)]);
+    const processedData = {
+        location: `${weatherData.location.name}, ${weatherData.location.country}`,
+        localTime: weatherData.location.localtime,
+        condition: weatherData.current.condition.text,
+        tempC: weatherData.current.temp_c + ' °C',
+        tempF: weatherData.current.temp_f + ' °F',
+        feelsLikeC: `Feels like ${weatherData.current.feelslike_c} °C`,
+        feelsLikeF: `Feels like ${weatherData.current.feelslike_f} °F`,
+        humidity: `${weatherData.current.humidity}%`,
+        windSpeedKPH: `${weatherData.current.wind_kph} km/h`,
+        windSpeedMPH: `${weatherData.current.wind_mph} mph`,
+        chanceRain: `${forecastData.forecast.forecastday[0].day.daily_chance_of_rain}%`,
+    };
+    return processedData;
+};
+
 // Get weather data
 const getWeatherData = async (location) => {
     try {
@@ -24,25 +43,6 @@ const getForecastData = async (location) => {
     } catch (error) {
         alert(error.toString().replace('Error: ', ''));
     }
-};
-
-// Process data
-const processData = async (searchParameter) => {
-    const [weatherData, forecastData] = await Promise.all([getWeatherData(searchParameter), getForecastData(searchParameter)]);
-    const processedData = {
-        location: `${weatherData.location.name}, ${weatherData.location.country}`,
-        localTime: weatherData.location.localtime,
-        condition: weatherData.current.condition.text,
-        tempC: weatherData.current.temp_c + ' °C',
-        tempF: weatherData.current.temp_f + ' °F',
-        feelsLikeC: `Feels like ${weatherData.current.feelslike_c} °C`,
-        feelsLikeF: `Feels like ${weatherData.current.feelslike_f} °F`,
-        humidity: `${weatherData.current.humidity}%`,
-        windSpeedKPH: `${weatherData.current.wind_kph} km/h`,
-        windSpeedMPH: `${weatherData.current.wind_mph} mph`,
-        chanceRain: `${forecastData.forecast.forecastday[0].day.daily_chance_of_rain}%`,
-    };
-    return processedData;
 };
 
 export default processData;
