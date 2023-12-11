@@ -1,0 +1,39 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 1px solid black;
+}
+
+:root {
+    --dark-blue: #0a2342;
+    --light-blue: #283e51;
+}
+
+body {
+    background: linear-gradient(var(--dark-blue), var(--light-blue));
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 64px 1fr 64px; 
+}
+
+/* Header */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header > div {
+    display: flex;
+    align-items: center;
+}
+
+/* Footer */
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
