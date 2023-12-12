@@ -21,7 +21,6 @@ const renderData = async (searchBarValue) => {
         }
         weatherIcon.setIcon(data.isDay, data.condition);
         previousSearch.setValue(searchBarValue);
-        document.querySelector('input').value = '';
     }, 500);
 };
 
@@ -30,6 +29,12 @@ const searchBarHandler = (() => {
     const searchBar = document.querySelector('input');
     searchBar.addEventListener('keyup', (e) => {
         if (e.key === 'Enter' && searchBar.value.trim()) {
+            renderData(searchBar.value);
+        }
+    });
+    const searchBarIcon = document.querySelector('svg.search-icon');
+    searchBarIcon.addEventListener('click', () => {
+        if (searchBar.value.trim()) {
             renderData(searchBar.value);
         }
     });
