@@ -82,6 +82,10 @@ header > div > button:focus {
     outline: 2px solid white;
 }
 
+header > div > button.active {
+    outline: 2px solid white;
+}
+
 /* Content */
 .content {
     display: flex;

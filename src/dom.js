@@ -60,11 +60,17 @@ const unitsHandler = () => {
     const setSystemUS = () => {
         system = 'US';
     };
-    document.querySelector('button.SI').addEventListener('click', () => {
+    const siButton = document.querySelector('button.SI');
+    const usButton = document.querySelector('button.US');
+    siButton.addEventListener('click', () => {
+        siButton.classList.add('active');
+        usButton.classList.remove('active');
         setSystemSI();
         renderData(previousSearch.getValue());
     });
-    document.querySelector('button.US').addEventListener('click', () => {
+    usButton.addEventListener('click', () => {
+        usButton.classList.add('active');
+        siButton.classList.remove('active');
         setSystemUS();
         renderData(previousSearch.getValue());
     });
