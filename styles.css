@@ -2,7 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 :root {
@@ -54,11 +54,12 @@ header > div > input {
     padding: 4px 16px;
 }
 
-header div > input:focus {
+header > div > input:focus {
     outline: 2px solid var(--starry-yellow);
 }
 
-header > div:nth-child(2) > svg {
+header > div > svg.search-icon {
+    cursor: pointer;
     position: relative;
     left: -40px;
 }
@@ -67,6 +68,7 @@ header > div > button {
     background-color: var(--starry-yellow);
     border: none;
     border-radius: 24px;
+    cursor: pointer;
     font-family: inherit;
     padding: 4px 12px;
 }
