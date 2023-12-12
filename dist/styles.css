@@ -37,3 +37,30 @@ footer {
     align-items: center;
     justify-content: center;
 }
+
+/* Content */
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content > .top-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content > .bottom-container {
+    display: flex;
+    justify-content: space-between;
+    width: 600px;
+}
+
+.content > .bottom-container > .left-column > div:first-child {
+    display: flex;
+}
+
+.content > .bottom-container > .right-column > div {
+    display: flex;
+}
