@@ -1,3 +1,5 @@
+import getDayStatus from './utils';
+
 // Process data
 const processData = async (searchParameter) => {
     const [weatherData, forecastData] = await Promise.all([getWeatherData(searchParameter), getForecastData(searchParameter)]);
@@ -13,6 +15,7 @@ const processData = async (searchParameter) => {
         windSpeedKPH: `${weatherData.current.wind_kph} km/h`,
         windSpeedMPH: `${weatherData.current.wind_mph} mph`,
         chanceRain: `${forecastData.forecast.forecastday[0].day.daily_chance_of_rain}%`,
+        isDay: getDayStatus(weatherData.location.localtime),
     };
     return processedData;
 };
