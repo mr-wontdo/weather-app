@@ -2,8 +2,10 @@ import processData from './api';
 
 // Render data to HTML
 const renderData = async (searchBarValue) => {
+    loader.show();
     const data = await processData(searchBarValue);
     setTimeout(() => {
+        loader.hide();
         console.log(data); // Need to remove after testing
         document.querySelector('.location').textContent = data.location;
         document.querySelector('.local-time').textContent = data.localTime;
@@ -98,9 +100,23 @@ const weatherIconHandler = () => {
     return { setIcon };
 };
 
+// Loader handler
+const loaderHandler = () => {
+    const show = () => {
+        document.querySelector('.content').style.display = 'none';
+        document.querySelector('.loader').hidden = false;
+    };
+    const hide = () => {
+        document.querySelector('.content').removeAttribute('style');
+        document.querySelector('.loader').hidden = true;
+    };
+    return { show, hide };
+};
+
 // Initialization
 const previousSearch = previousSearchHandler();
 const units = unitsHandler();
 const weatherIcon = weatherIconHandler();
+const loader = loaderHandler();
 
 export default renderData;
