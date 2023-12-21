@@ -3,6 +3,10 @@ import getDayStatus from './utils';
 // Process data
 const processData = async (searchParameter) => {
     const [weatherData, forecastData] = await Promise.all([getWeatherData(searchParameter), getForecastData(searchParameter)]);
+    if (typeof weatherData === 'string') {
+        const error = weatherData;
+        return error;
+    }
     const processedData = {
         location: `${weatherData.location.name}, ${weatherData.location.country}`,
         localTime: weatherData.location.localtime,
@@ -30,7 +34,7 @@ const getWeatherData = async (location) => {
         }
         return data;
     } catch (error) {
-        alert(error.toString().replace('Error: ', ''));
+        return (error.toString().replace('Error: ', ''));
     }
 };
 
@@ -44,7 +48,7 @@ const getForecastData = async (location) => {
         }
         return data;
     } catch (error) {
-        alert(error.toString().replace('Error: ', ''));
+        return (error.toString().replace('Error: ', ''));
     }
 };
 
