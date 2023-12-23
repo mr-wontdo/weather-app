@@ -190,3 +190,9 @@ footer {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+/* Error */
+.error {
+    font-size: 1.5rem;
+    margin: 72px auto 0 auto;
+}
