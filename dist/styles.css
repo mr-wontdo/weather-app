@@ -111,10 +111,20 @@ header > div > button.active {
 
 .content > .bottom-container > .left-column > div:first-child {
     display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.content > .bottom-container > .right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 }
 
 .content > .bottom-container > .right-column > div {
     display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
 .content .location {
@@ -174,7 +184,6 @@ footer {
     height: 120px;
     animation: spin 2s linear infinite;
     margin: 72px auto 0 auto;
-    position: relative;
 }
 
 @keyframes spin {
