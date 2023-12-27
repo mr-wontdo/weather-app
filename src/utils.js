@@ -1,10 +1,12 @@
-const getDayStatus = (localTime) => {
-    const [date, time] = localTime.split(' ');
-    const [hh, mm] = time.split(':');
-    if (hh > 5 && hh < 22) {
-        return true;
-    }
-    return false;
+const formatDate = (date) => {
+    const [yyyy, mm, dd] = date.split('-');
+    const processedDate = `${mm}/${dd}/${yyyy}`;
+    console.log(new Date(processedDate)); // Need to remove after testing
+    const month = new Date(processedDate).toLocaleString('default', { month: 'long' });
+    const day = new Date(processedDate).toLocaleString('default', { weekday: 'long' });
+    const suffix = getDaySuffix(dd);
+
+    return `${day}, ${dd}${suffix} ${month} ${yyyy}`;
 };
 
 const getDaySuffix = (dd) => {
@@ -18,6 +20,15 @@ const getDaySuffix = (dd) => {
     //   30    31
         'th', 'st'];
     return suffixes[+dd];
+};
+
+const getDayStatus = (localTime) => {
+    const [date, time] = localTime.split(' ');
+    const [hh, mm] = time.split(':');
+    if (hh > 5 && hh < 22) {
+        return true;
+    }
+    return false;
 };
 
 export default getDayStatus;
