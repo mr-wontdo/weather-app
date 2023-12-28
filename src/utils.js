@@ -1,3 +1,14 @@
+const formatStandardTime = (time) => {
+    let [hh, mm] = time.split(':');
+    const amPm = hh > 11 ? 'p.m.' : 'a.m.';
+    if (hh > 12) {
+        hh -= 12;
+    } else if (hh === '00') {
+        hh = 12;
+    }
+    return `${hh}:${mm} ${amPm}`;
+};
+
 const formatDate = (date) => {
     const [yyyy, mm, dd] = date.split('-');
     const processedDate = `${mm}/${dd}/${yyyy}`;
