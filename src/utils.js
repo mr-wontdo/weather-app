@@ -1,3 +1,10 @@
+const formatStandardLocalTime = (localTime) => {
+    let [date, time] = localTime.split(' ');
+    date = formatDate(date);
+    time = formatStandardTime(time);
+    return `${date} | ${time}`;
+};
+
 const formatStandardTime = (time) => {
     let [hh, mm] = time.split(':');
     const amPm = hh > 11 ? 'p.m.' : 'a.m.';
