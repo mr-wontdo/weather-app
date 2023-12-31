@@ -55,4 +55,4 @@ const getDayStatus = (localTime) => {
     return false;
 };
 
-export default getDayStatus;
+export { getDayStatus, formatMilitaryLocalTime, formatStandardLocalTime };
