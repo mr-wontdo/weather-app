@@ -1,3 +1,9 @@
+const formatMilitaryLocalTime = (localTime) => {
+    let [date, time] = localTime.split(' ');
+    date = formatDate(date);
+    return `${date} | ${time}`;
+};
+
 const formatStandardLocalTime = (localTime) => {
     let [date, time] = localTime.split(' ');
     date = formatDate(date);

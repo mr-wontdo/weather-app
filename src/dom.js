@@ -4,6 +4,10 @@ import processData from './api';
 const renderData = async (searchBarValue) => {
     loader.show();
     const data = await processData(searchBarValue);
+    if (typeof data === 'string') {
+        error.show(data);
+        return;
+    }
     setTimeout(() => {
         loader.hide();
         console.log(data); // Need to remove after testing
@@ -105,6 +109,7 @@ const loaderHandler = () => {
     const show = () => {
         document.querySelector('.content').style.display = 'none';
         document.querySelector('.loader').hidden = false;
+        document.querySelector('.error').hidden = true;
     };
     const hide = () => {
         document.querySelector('.content').removeAttribute('style');
@@ -113,10 +118,21 @@ const loaderHandler = () => {
     return { show, hide };
 };
 
+// Error handler
+const errorHandler = () => {
+    const show = (error) => {
+        document.querySelector('.loader').hidden = true;
+        document.querySelector('.error').hidden = false;
+        document.querySelector('.error').textContent = error;
+    };
+    return { show };
+};
+
 // Initialization
 const previousSearch = previousSearchHandler();
 const units = unitsHandler();
 const weatherIcon = weatherIconHandler();
 const loader = loaderHandler();
+const error = errorHandler();
 
 export default renderData;
