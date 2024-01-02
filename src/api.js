@@ -1,4 +1,4 @@
-import getDayStatus from './utils';
+import { getDayStatus, formatMilitaryLocalTime, formatStandardLocalTime } from './utils';
 
 // Process data
 const processData = async (searchParameter) => {
@@ -9,7 +9,8 @@ const processData = async (searchParameter) => {
     }
     const processedData = {
         location: `${weatherData.location.name}, ${weatherData.location.country}`,
-        localTime: weatherData.location.localtime,
+        militaryLocalTime: formatMilitaryLocalTime(weatherData.location.localtime),
+        StandardLocalTime: formatStandardLocalTime(weatherData.location.localtime),
         condition: weatherData.current.condition.text,
         tempC: weatherData.current.temp_c + ' °C',
         tempF: weatherData.current.temp_f + ' °F',
