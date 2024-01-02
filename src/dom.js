@@ -12,15 +12,16 @@ const renderData = async (searchBarValue) => {
         loader.hide();
         console.log(data); // Need to remove after testing
         document.querySelector('.location').textContent = data.location;
-        document.querySelector('.local-time').textContent = data.localTime;
         document.querySelector('.condition').textContent = data.condition;
         document.querySelector('.chance-rain').textContent = data.chanceRain;
         document.querySelector('.humidity').textContent = data.humidity;
         if (units.getSystem() === 'SI') {
+            document.querySelector('.local-time').textContent = data.militaryLocalTime;
             document.querySelector('.temp').textContent = data.tempC;
             document.querySelector('.feels-like').textContent = data.feelsLikeC;
             document.querySelector('.wind-speed').textContent = data.windSpeedKPH;
         } else if (units.getSystem() === 'US') {
+            document.querySelector('.local-time').textContent = data.StandardLocalTime;
             document.querySelector('.temp').textContent = data.tempF;
             document.querySelector('.feels-like').textContent = data.feelsLikeF;
             document.querySelector('.wind-speed').textContent = data.windSpeedMPH;
