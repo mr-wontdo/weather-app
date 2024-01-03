@@ -10,7 +10,6 @@ const renderData = async (searchBarValue) => {
     }
     setTimeout(() => {
         loader.hide();
-        console.log(data); // Need to remove after testing
         document.querySelector('.location').textContent = data.location;
         document.querySelector('.condition').textContent = data.condition;
         document.querySelector('.chance-rain').textContent = data.chanceRain;
