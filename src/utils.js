@@ -28,8 +28,9 @@ const formatDate = (date) => {
     const month = new Date(processedDate).toLocaleString('default', { month: 'long' });
     const day = new Date(processedDate).toLocaleString('default', { weekday: 'long' });
     const suffix = getDaySuffix(dd);
+    const processedDD = +dd;
 
-    return `${day}, ${dd}${suffix} ${month} ${yyyy}`;
+    return `${day}, ${processedDD}${suffix} ${month} ${yyyy}`;
 };
 
 const getDaySuffix = (dd) => {
