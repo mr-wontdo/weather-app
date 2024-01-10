@@ -28,7 +28,7 @@ const processData = async (searchParameter) => {
 // Get weather data
 const getWeatherData = async (location) => {
     try {
-        const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=c81cf0bc1ec1474684580852233011&q=${location}`, { mode: 'cors' });
+        const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=c81cf0bc1ec1474684580852233011&q=${location}`, { mode: 'cors' });
         const data = await response.json();
         if (data.hasOwnProperty('error')) {
             throw new Error(data.error.message);
@@ -42,7 +42,7 @@ const getWeatherData = async (location) => {
 // Get forecast data
 const getForecastData = async (location) => {
     try {
-        const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=c81cf0bc1ec1474684580852233011&q=${location}`, { mode: 'cors' });
+        const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=c81cf0bc1ec1474684580852233011&q=${location}`, { mode: 'cors' });
         const data = await response.json();
         if (data.hasOwnProperty('error')) {
             throw new Error(data.error.message);
